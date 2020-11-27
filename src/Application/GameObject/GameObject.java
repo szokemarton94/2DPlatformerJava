@@ -39,8 +39,13 @@ public abstract class GameObject {
     public int getX() {
         return x;
     }
+
     public int getY() {
         return y;
+    }
+
+    public int getWidth() {
+        return width;
     }
 
     public abstract void draw(Graphics2D gtd);

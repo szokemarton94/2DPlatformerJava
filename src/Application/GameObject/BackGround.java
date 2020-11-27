@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class BackGround extends GameObject {
+
     public BackGround(int height, int width, String pathname) {
         super(0, 0, width, height); //super()call to superclass constructor
         super.tempDisplayImage = imageMaker(pathname);
@@ -22,6 +23,7 @@ public class BackGround extends GameObject {
         try {
             return (ImageIO.read(new File(pathname)));
         } catch (IOException ignored) {
+            System.out.println("Image File Not Found For - BackGround - with pathname: "+ pathname);
         }
         return null;
     }

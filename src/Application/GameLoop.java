@@ -1,9 +1,5 @@
 package Application;
 
-
-
-
-
 import Application.Level.FirstLevel;
 import Application.Level.Level;
 
@@ -59,19 +55,27 @@ public class GameLoop extends JPanel implements ActionListener {
     }
 
     /**
-     * Change x and y location of JPanel - functioning as a"CAMERA"
+     * Change x and y location of JPanel - functioning as a "CAMERA"
      **/
     private void changeLocationOfJPanel() {
+        boolean tempDirection = currentLevel.getPlayer().isDirection(); //false = -> | true = <-
+        int tempPlayerX = currentLevel.getPlayer().getX();
+        //TODO
+        System.out.println(tempPlayerX);
+        int tempPlayerY = currentLevel.getPlayer().getY();
 
-        if (currentLevel.getPlayer().getX() <= currentLevel.getBackGround().getX() + 465 && !currentLevel.getPlayer().isDirection()) {
-            this.setLocation(0, -currentLevel.getPlayer().getY() + 350);
-            //insuff
-        } else if (currentLevel.getPlayer().getX() >= 2500 && currentLevel.getPlayer().isDirection()) {
-            this.setLocation(-2480, -currentLevel.getPlayer().getY() + 350);
+        //Left End Of Map
+        if (tempPlayerX <= currentLevel.getBackGround().getX() + 465 && !tempDirection) {
+            this.setLocation(0, -tempPlayerY + 350);
+        //Right End Of Map
+        } else if (tempPlayerX >= currentLevel.getBackGround().getWidth() - 800 && tempDirection) {
+            //-2480
+            this.setLocation(-2100, -tempPlayerY + 350);
+
         } else {
 
             //ha megváltozik az előző körben az irány
-            if (currentLevel.getPlayer().isDirection() != lastRoundDirection) {
+            if (tempDirection != lastRoundDirection) {
                 isDirectionChanged = true;
             }
 
@@ -80,13 +84,13 @@ public class GameLoop extends JPanel implements ActionListener {
 
                 inCaseOFDirectionChange();
 
-                if (!currentLevel.getPlayer().isDirection() && this.getLocation().getX()
-                        >= -currentLevel.getPlayer().getX() + 400) {
+                if (!tempDirection && this.getLocation().getX()
+                        >= -tempPlayerX + 400) {
                     isDirectionChanged = false;
                     xSpeed = 0;
                 }
-                if (currentLevel.getPlayer().isDirection() && this.getLocation().getX()
-                        <= -currentLevel.getPlayer().getX() + 100) {
+                if (tempDirection && this.getLocation().getX()
+                        <= -tempPlayerX + 100) {
                     isDirectionChanged = false;
                     xSpeed = 0;
                 }
@@ -97,14 +101,14 @@ public class GameLoop extends JPanel implements ActionListener {
             } else {
                 //ha irányváltás nincs a kamera fixen követi a karaktert
                 int adjustX = 100;
-                if (!currentLevel.getPlayer().isDirection()) {    // -->
+                if (!tempDirection) {    // -->
                     adjustX = 400;
                 }
                 this.setLocation(-currentLevel.getPlayer().getX() + adjustX, -currentLevel.getPlayer().getY() + 350);
 
             }
         }
-        lastRoundDirection = currentLevel.getPlayer().isDirection();
+        lastRoundDirection = tempDirection;
         this.setSize(getWidth() + currentLevel.getPlayer().getX() * 2, getHeight() + currentLevel.getPlayer().getY() * 2);
 
     }
@@ -208,7 +212,6 @@ public class GameLoop extends JPanel implements ActionListener {
             else
                 xSpeed = -cameraSpeed;
         }
-        //TODO
     }
 
     private void startNextLevel() {

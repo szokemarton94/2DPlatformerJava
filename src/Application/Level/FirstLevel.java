@@ -10,7 +10,7 @@ import java.util.List;
 public class FirstLevel extends Level {
 
     public FirstLevel() {
-        super.player = new Player(300, 500);
+        super.player = new Player(1500, 500);
         super.backGround = new BackGround(1554, 3108, new File("").getAbsolutePath().concat("/src/Image_Resources/lvl1Backver2.png"));
         super.foreGround = new BackGround(1554, 3108, new File("").getAbsolutePath().concat("/src/Image_Resources/lvl1Frontver2.png"));
         super.effect = new BackGround(748, 3075, new File("").getAbsolutePath().concat("/src/Image_Resources/effect1.png"));
