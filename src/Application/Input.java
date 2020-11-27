@@ -5,9 +5,9 @@ import java.awt.event.KeyEvent;
 
 public class Input extends KeyAdapter {
 
-    MainGameLoop panel;
+    GameLoop panel;
 
-    public Input(MainGameLoop panel) {
+    public Input(GameLoop panel) {
         this.panel = panel;
     }
 

@@ -2,7 +2,7 @@ package Application.Display;
 
 
 
-import Application.MainGameLoop;
+import Application.GameLoop;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -280,26 +280,26 @@ public class PlayerDisplay {
 
     public void attackedAnimationL(long attackedRound) {
         if (attackedRound != 0)
-            if (MainGameLoop.roundCounter == attackedRound) {
+            if (GameLoop.roundCounter == attackedRound) {
                 tempDisplayImage = leftInjuredMovement().get(0);
-            } else if (MainGameLoop.roundCounter == attackedRound + 8) {
+            } else if (GameLoop.roundCounter == attackedRound + 8) {
                 tempDisplayImage = leftInjuredMovement().get(1);
-            } else if (MainGameLoop.roundCounter == attackedRound + 16) {
+            } else if (GameLoop.roundCounter == attackedRound + 16) {
                 tempDisplayImage = leftInjuredMovement().get(2);
-            } else if (MainGameLoop.roundCounter == attackedRound + 24) {
+            } else if (GameLoop.roundCounter == attackedRound + 24) {
                 stopRight();
             }
     }
 
     public void attackedAnimationR(long attackedRound) {
         if (attackedRound != 0)
-            if (MainGameLoop.roundCounter == attackedRound) {
+            if (GameLoop.roundCounter == attackedRound) {
                 tempDisplayImage = rightInjuredMovement().get(0);
-            } else if (MainGameLoop.roundCounter == attackedRound + 8) {
+            } else if (GameLoop.roundCounter == attackedRound + 8) {
                 tempDisplayImage = rightInjuredMovement().get(1);
-            } else if (MainGameLoop.roundCounter == attackedRound + 16) {
+            } else if (GameLoop.roundCounter == attackedRound + 16) {
                 tempDisplayImage = rightInjuredMovement().get(2);
-            } else if (MainGameLoop.roundCounter == attackedRound + 24) {
+            } else if (GameLoop.roundCounter == attackedRound + 24) {
                 stopRight();
             }
     }

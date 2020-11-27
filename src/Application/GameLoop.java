@@ -17,13 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainGameLoop extends JPanel implements ActionListener {
+public class GameLoop extends JPanel implements ActionListener {
     private final String projectFolder = new File("").getAbsolutePath();
     public static long roundCounter;
     public Timer timer;
-    private List<Level> levels;             // ArrayList containing LEVELS
+    private final List<Level> levels;             // ArrayList containing LEVELS
     private Level currentLevel;             // Level currently  DRAWING in MainLoop
-    private int levelCounter;               // Helper variable
+    private int levelCounter;
     private int xSpeed;
     private boolean isDirectionChanged;
     private boolean lastRoundDirection;
@@ -35,9 +35,7 @@ public class MainGameLoop extends JPanel implements ActionListener {
     /**
      * Main Loop for the Game
      **/
-    MainGameLoop() {
-
-
+    GameLoop() {
         this.levelCounter = 0;
         this.levels = levelListCreator();
         this.currentLevel = levels.get(levelCounter);
@@ -47,7 +45,6 @@ public class MainGameLoop extends JPanel implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 timer.start();
-                System.out.println(currentLevel.getPlayer().getX());
                 if (currentLevel.isFinished()) {                  // if conditions matched -> current level turns to next level
                     startNextLevel();
                     roundCounter = 0;
@@ -62,7 +59,7 @@ public class MainGameLoop extends JPanel implements ActionListener {
     }
 
     /**
-     * change x and y location of JPanel "CAMERA"
+     * Change x and y location of JPanel - functioning as a"CAMERA"
      **/
     private void changeLocationOfJPanel() {
 
@@ -121,7 +118,7 @@ public class MainGameLoop extends JPanel implements ActionListener {
         Graphics2D gtd = (Graphics2D) graphics;
         currentLevel.draw(gtd);
         graphics.setFont(new Font("arial", Font.BOLD, 14));
-        graphics.drawString("LIFE: " + currentLevel.getPlayer().getHealthPoint(), currentLevel.getPlayer().getX(), currentLevel.getPlayer().getY()-10);
+//        graphics.drawString("LIFE: " + currentLevel.getPlayer().getHealthPoint(), currentLevel.getPlayer().getX(), currentLevel.getPlayer().getY()-10);
     }
 
     @Override

@@ -6,7 +6,7 @@ import java.awt.*;
 public class GameFrame extends JFrame {
 
     public GameFrame() {
-        MainGameLoop panel = new MainGameLoop();
+        GameLoop panel = new GameLoop();
         panel.setLocation(0, 0);
         panel.setSize(this.getSize());
         panel.setBackground(Color.BLACK);

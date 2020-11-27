@@ -1,6 +1,6 @@
 package Application.GameObject;
 import Application.Display.PlayerDisplay;
-import Application.MainGameLoop;
+import Application.GameLoop;
 
 import java.awt.*;
 import java.util.List;
@@ -95,8 +95,6 @@ public class Player extends Creature {
     }
 
     public void set(List<InteractiveObject> obstacleList, List<Creature> creatureList) {
-//        System.out.println(x);
-//        System.out.println(y);
         if (isControlAble) {
             keyInputHandler();
             attack(creatureList);
@@ -163,7 +161,7 @@ public class Player extends Creature {
 
 
     public void getAttacked(Creature creature) {
-        attackedRound = MainGameLoop.roundCounter;
+        attackedRound = GameLoop.roundCounter;
         if (creature.x > this.x) {
             isAttackedByLeft = true;
             xSpeed = 0;
@@ -178,9 +176,8 @@ public class Player extends Creature {
 
     @Override
     public void statusCheck() {
-        //System.out.println(healthPoint);
         if (attackedRound != 0)
-            if (MainGameLoop.roundCounter < (attackedRound + 50) && MainGameLoop.roundCounter >= attackedRound) {
+            if (GameLoop.roundCounter < (attackedRound + 50) && GameLoop.roundCounter >= attackedRound) {
                 isControlAble = false;
                 xSpeed = 0;
                 keyRight = false;
@@ -188,7 +185,7 @@ public class Player extends Creature {
                 keyUp = false;
                 keyAttack = false;
             }
-        if (MainGameLoop.roundCounter == attackedRound + 50) {
+        if (GameLoop.roundCounter == attackedRound + 50) {
             isControlAble = true;
             if (direction) {
                 playerDisplay.stopRight();
