@@ -11,8 +11,8 @@ public class FirstLevel extends Level {
 
     public FirstLevel() {
         super.player = new Player(1500, 500);
-        super.backGround = new BackGround(1554, 3108, new File("").getAbsolutePath().concat("/src/Image_Resources/lvl1Backver2.png"));
-        super.foreGround = new BackGround(1554, 3108, new File("").getAbsolutePath().concat("/src/Image_Resources/lvl1Frontver2.png"));
+        super.backGround = new BackGround(1554, 3108, new File("").getAbsolutePath().concat("/src/Image_Resources/Lvl1Back.png"));
+        super.foreGround = new BackGround(1554, 3108, new File("").getAbsolutePath().concat("/src/Image_Resources/Lvl1Front.png"));
         super.effect = new BackGround(748, 3075, new File("").getAbsolutePath().concat("/src/Image_Resources/effect1.png"));
         super.obstacleList = levelMaker();
         super.initializedInteractiveObject = new InitializedInteractiveObject(2100, 150);
@@ -35,10 +35,10 @@ public class FirstLevel extends Level {
 
     @Override
     public void draw(Graphics2D gtd) {
-        backGround.draw(gtd);
         for (InteractiveObject obstacle : obstacleList) {
             obstacle.draw(gtd);
         }
+        backGround.draw(gtd);
         for (Creature creature : creatureList) {
             creature.draw(gtd);
         }
