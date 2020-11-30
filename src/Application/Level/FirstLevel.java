@@ -92,7 +92,7 @@ public class FirstLevel extends Level {
         returnList.add(new Obstacle(3055, 987, 65, 50));
         //Exit2
         returnList.add(new Obstacle(3111, 837, 5, 150));
-        // verem
+        // Abyss
         returnList.add(new Obstacle(2810, 1041, 5, 100));
         returnList.add(new Obstacle(3055, 1041, 5, 100));
         return returnList;
@@ -101,9 +101,9 @@ public class FirstLevel extends Level {
 
     private List<Creature> creatureListCreator() {
         List<Creature> creatureList = new ArrayList<>();
-//        creatureList.add(new Troll(1900, 190, 1504, 1920));
-//        creatureList.add(new Troll(2600, 190, 2330, 3020));
-//        creatureList.add(new Troll(1900, 500, 1880, 2775));
+        creatureList.add(new Troll(1900, 190, 1504, 1920));
+        creatureList.add(new Troll(2600, 190, 2330, 3020));
+        creatureList.add(new Troll(1900, 500, 1880, 2775));
         return creatureList;
     }
 }

@@ -21,7 +21,7 @@ public class GameLoop extends JPanel implements ActionListener {
     private final List<Level> levels;             // ArrayList containing LEVELS
     private Level currentLevel;             // Level currently  DRAWING in MainLoop
     private int levelCounter;
-    private int xSpeed;
+    private int JPanelXSpeed;
     private boolean isDirectionChanged;
     private boolean lastRoundDirection;
     //Music
@@ -66,7 +66,9 @@ public class GameLoop extends JPanel implements ActionListener {
         boolean tempDirection = currentLevel.getPlayer().isDirection(); //false = -> | true = <-
         int tempPlayerX = currentLevel.getPlayer().getX();
         int tempPlayerY = currentLevel.getPlayer().getY();
+        double tempPlayerXSpeed = currentLevel.getPlayer().getxSpeed();
         int JPanelX;
+
         // < -- Left
         if (tempPlayerX <= currentLevel.getBackGround().getX() + 465) {
             if (!tempDirection) {    // <--
@@ -76,59 +78,43 @@ public class GameLoop extends JPanel implements ActionListener {
             }
             //Right End Of The Map -- >
         } else if (tempPlayerX >= currentLevel.getBackGround().getWidth() - 1000) {
-            if (!tempDirection){    //<--
+            if (!tempDirection) {    //<--
                 JPanelX = Math.max(-tempPlayerX + 400, -2100);
-            }else {
+            } else {
                 JPanelX = Math.max(-tempPlayerX + 100, -2100);
             }
 
 
         } else {
-            //Between
-            //megváltozott-e az irány?
-            if (tempDirection != lastRoundDirection) {
-                isDirectionChanged = true;
+            if (tempPlayerXSpeed != 0) {
+                int maxJPanelSpeed = 10;
+                if (!tempDirection) {
+                    System.out.println("LEFT");
+                    if (JPanelXSpeed < maxJPanelSpeed)
+                        JPanelXSpeed++;
+                    else JPanelXSpeed = maxJPanelSpeed;
+                } else {    //--> right
+                    System.out.println("RIGHT");
+                    if (JPanelXSpeed > -maxJPanelSpeed)
+                        JPanelXSpeed--;
+                    else JPanelXSpeed = -maxJPanelSpeed;
+                }
+                JPanelX = (int) this.getLocation().getX() + JPanelXSpeed;
             } else {
-                isDirectionChanged = false;
-            }
+                if (!tempDirection) {    // -->
+                    System.out.println("STATIC LEFT");
+                    if ((int) this.getLocation().getX() + JPanelXSpeed> -tempPlayerX+600){
+                        JPanelXSpeed--;
+                    }else{
+                        JPanelXSpeed=0;
+                    }
+                    JPanelX = (int) this.getLocation().getX() + JPanelXSpeed;
 
-            //ha irányváltás történik elindul a kamera
-//            if (isDirectionChanged) {
-//                int cameraSpeed = 10;
-////                if (!currentLevel.getPlayer().isDirection()) {          //--> right
-////                    if (xSpeed < cameraSpeed)
-////                        xSpeed++;
-////                    else
-////                        xSpeed = cameraSpeed;
-////                } else if (currentLevel.getPlayer().isDirection()) {    //--> left
-////                    if (xSpeed > - cameraSpeed)
-////                        xSpeed--;
-////                    else xSpeed = - cameraSpeed;
-////                }
-//
-////                if (!tempDirection && this.getLocation().getX()
-////                        >= -tempPlayerX + 400) {
-////                    isDirectionChanged = false;
-////                    xSpeed = 0;
-////                }
-////                if (tempDirection && this.getLocation().getX()
-////                        <= -tempPlayerX + 100) {
-////                    isDirectionChanged = false;
-////                    xSpeed = 0;
-////                }
-//                JPanelX = (int) this.getLocation().getX() + xSpeed;
-////                this.setLocation((int) this.getLocation().getX() + xSpeed, -tempPlayerY + 350);
-//
-//
-//            } else {
-            //ha irányváltás nincs a kamera fixen követi a karaktert
-
-            if (!tempDirection) {    // -->
-                JPanelX = -tempPlayerX + 400;
-            } else {
-                JPanelX = -tempPlayerX + 100;
+                } else {
+                    System.out.println("STATIC RIGHT");
+                    JPanelX = -tempPlayerX + 100;
+                }
             }
-//            }
         }
         this.setLocation(JPanelX, -tempPlayerY + 350);
         lastRoundDirection = tempDirection;
