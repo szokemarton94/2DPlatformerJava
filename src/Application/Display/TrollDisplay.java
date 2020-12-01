@@ -1,9 +1,6 @@
 package Application.Display;
 
-
-
 import Application.GameLoop;
-
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -12,13 +9,13 @@ import java.util.ArrayList;
 
 public class TrollDisplay {
     public BufferedImage tempDisplayImage;
-    private  ArrayList<BufferedImage> movementRight;
-    private ArrayList<BufferedImage> movementLeft;
-    private ArrayList<BufferedImage> leftAttack;
-    private ArrayList<BufferedImage> rightAttack;
+    private final ArrayList<BufferedImage> movementRight;
+    private final ArrayList<BufferedImage> movementLeft;
+    private final ArrayList<BufferedImage> leftAttack;
+    private final ArrayList<BufferedImage> rightAttack;
     private int display = 0;
     private int spriteDisplayFrequency;
-    private int speedGear = 6;
+    private final int speedGear = 6;
     private final String projectFolder = new File("").getAbsolutePath();
 
     public TrollDisplay() {
@@ -42,9 +39,6 @@ public class TrollDisplay {
             leftMovementList.add(ImageIO.read(new File(projectFolder.concat("/src/Image_Resources/TWL4.png"))));
             leftMovementList.add(ImageIO.read(new File(projectFolder.concat("/src/Image_Resources/TWL3.png"))));
             leftMovementList.add(ImageIO.read(new File(projectFolder.concat("/src/Image_Resources/TWL2.png"))));
-
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -77,7 +71,6 @@ public class TrollDisplay {
             leftAttackList.add(ImageIO.read(new File(projectFolder.concat("/src/Image_Resources/TAL3.png"))));
             leftAttackList.add(ImageIO.read(new File(projectFolder.concat("/src/Image_Resources/TAL4.png"))));
             leftAttackList.add(ImageIO.read(new File(projectFolder.concat("/src/Image_Resources/TAL5.png"))));
-
         }    catch (IOException e) {
         e.printStackTrace();
     }
@@ -92,7 +85,6 @@ public class TrollDisplay {
             rightAttackList.add(ImageIO.read(new File(projectFolder.concat("/src/Image_Resources/TAR3.png"))));
             rightAttackList.add(ImageIO.read(new File(projectFolder.concat("/src/Image_Resources/TAR4.png"))));
             rightAttackList.add(ImageIO.read(new File(projectFolder.concat("/src/Image_Resources/TAR5.png"))));
-
         }    catch (IOException e) {
             e.printStackTrace();
         }

@@ -11,7 +11,7 @@ public abstract class Level {
     protected List<InteractiveObject> obstacleList;
     protected BackGround backGround;
     protected BackGround foreGround;
-    protected List<Creature> creatureList;
+    protected List<Creature> NPCList;
     protected BackGround effect;
     public Level() {
 

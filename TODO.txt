@@ -1,0 +1,7 @@
+plans:
+-------
+implement: 
+- death
+- savegame
+- conversations with popup boxes...
+

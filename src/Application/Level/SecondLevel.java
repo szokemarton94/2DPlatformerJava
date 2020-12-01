@@ -16,7 +16,7 @@ public class SecondLevel extends Level {
         super.backGround = new BackGround(2655, 2720, new File("").getAbsolutePath().concat("/src/Image_Resources/Lvl2Back.png"));
         super.foreGround = new BackGround(2655, 2720, new File("").getAbsolutePath().concat("/src/Image_Resources/Lvl2Front.png"));
         super.obstacleList = levelMaker();
-        super.creatureList = creatureListCreator();
+        super.NPCList = creatureListCreator();
     }
 
     @Override
@@ -26,10 +26,10 @@ public class SecondLevel extends Level {
 
     @Override
     public void set() {
-        for (Creature creature : creatureList) {
+        for (Creature creature : NPCList) {
             creature.interaction(player, obstacleList);
         }
-        player.set(obstacleList, creatureList);
+        player.set(obstacleList, NPCList);
 
     }
 
@@ -39,7 +39,7 @@ public class SecondLevel extends Level {
             obstacle.draw(gtd);
         }
         backGround.draw(gtd);
-        for (Creature creature : creatureList) {
+        for (Creature creature : NPCList) {
             creature.draw(gtd);
         }
         player.draw(gtd);

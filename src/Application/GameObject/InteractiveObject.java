@@ -9,7 +9,7 @@ import java.awt.*;
  * features:
  * - all of GameObject
  * -
- * - hitbox - interActableObj
+ * - hitBox - interActiveObj
  */
 public abstract class InteractiveObject extends GameObject {
     boolean isActive;

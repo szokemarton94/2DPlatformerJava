@@ -1,21 +1,21 @@
 package Application.GameObject;
 
+import Application.Display.GearDisplay;
+
 import java.awt.*;
 import java.util.List;
 
 public class InitializedInteractiveObject extends InteractiveObject {
 
-//    private GearDisplay gearDisplay;
-
     public InitializedInteractiveObject(int x, int y) {
-//        this.gearDisplay = new GearDisplay();
+        GearDisplay gearDisplay = new GearDisplay();
         super.isActive = true;
         super.x = x;
         super.y = y;
         super.width = 50;
         super.height = 50;
         super.hitBox = new Rectangle(x, y, width, height);
-//        super.tempDisplayImage = gearDisplay.getImageList().get(0);
+        super.tempDisplayImage = gearDisplay.getImageList().get(0);
     }
 
     @Override

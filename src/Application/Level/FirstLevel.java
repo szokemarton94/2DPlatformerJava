@@ -15,8 +15,8 @@ public class FirstLevel extends Level {
         super.foreGround = new BackGround(1554, 3108, new File("").getAbsolutePath().concat("/src/Image_Resources/Lvl1Front.png"));
         super.effect = new BackGround(748, 3075, new File("").getAbsolutePath().concat("/src/Image_Resources/effect1.png"));
         super.obstacleList = levelMaker();
-        super.initializedInteractiveObject = new InitializedInteractiveObject(2100, 150);
-        super.creatureList = creatureListCreator();
+        super.initializedInteractiveObject = new InitializedInteractiveObject(1600,500);
+        super.NPCList = NPCListCreator();
     }
 
     @Override
@@ -26,20 +26,21 @@ public class FirstLevel extends Level {
 
     @Override
     public void set() {
-        for (Creature creature : creatureList) {
+        for (Creature creature : NPCList) {
             creature.interaction(player, obstacleList);
         }
-        player.set(obstacleList, creatureList);
+        player.set(obstacleList, NPCList);
         initializedInteractiveObject.interaction(player, obstacleList);
     }
 
     @Override
     public void draw(Graphics2D gtd) {
+        //TODO create a schema
         for (InteractiveObject obstacle : obstacleList) {
             obstacle.draw(gtd);
         }
         backGround.draw(gtd);
-        for (Creature creature : creatureList) {
+        for (Creature creature : NPCList) {
             creature.draw(gtd);
         }
         initializedInteractiveObject.draw(gtd);
@@ -49,7 +50,9 @@ public class FirstLevel extends Level {
     }
 
     private List<InteractiveObject> levelMaker() {
+        //TODO - add intractable object: gear
         List<InteractiveObject> returnList = new ArrayList<>();
+
         //FirstRoom
         returnList.add(new Obstacle(50, 500, 50, 620));
         returnList.add(new Obstacle(0, 1015, 450, 50));
@@ -99,8 +102,9 @@ public class FirstLevel extends Level {
     }
 
 
-    private List<Creature> creatureListCreator() {
+    private List<Creature> NPCListCreator() {
         List<Creature> creatureList = new ArrayList<>();
+        //TODO set to right place
         creatureList.add(new Troll(1900, 190, 1504, 1920));
         creatureList.add(new Troll(2600, 190, 2330, 3020));
         creatureList.add(new Troll(1900, 500, 1880, 2775));

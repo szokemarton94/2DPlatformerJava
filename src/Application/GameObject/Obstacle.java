@@ -9,6 +9,7 @@ import java.util.List;
 
 public class Obstacle extends InteractiveObject {
 
+
     public Obstacle(int x, int y, int width, int height) {
         super.x = x;
         super.y = y;
